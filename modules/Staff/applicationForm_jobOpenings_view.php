@@ -1,4 +1,7 @@
 <?php
+// REDIRECCIÓN FORZADA AL PORTAL DE TUTORES
+header("Location: ./index.php?q=/modules/Tutor/tutor_login.php");
+exit();
 /*
 Gibbon: the flexible, open school platform
 Founded by Ross Parker at ICHK Secondary. Built by Ross Parker, Sandra Kuipers and the Gibbon community (https://gibbonedu.org/about/)

@@ -31,7 +31,7 @@ $databaseName = 'educonnect';
 /**
  * Sets a globally unique id, to allow multiple installs on a single server.
  */
-$guid = '4q5v7bkj-7xtk-cwx-g5qg-6p8osmwpecd';
+$guid = 'jwvejmz5p-s5v-upko-ub7q-q6m6hpsiib0';
 
 /**
  * Sets system-wide caching factor, used to balance performance and freshness.

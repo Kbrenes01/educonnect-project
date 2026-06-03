@@ -28,16 +28,15 @@ For info about editing, see: https://twig.symfony.com/doc/2.x/
 
     {% endif %}
 
-    {% if publicStaffApplications %}
-        {{ homepage.card(
-            __('Staff Applications'), 
-            __('Individuals interested in working at %1$s may use our %2$s online form%3$s to view job openings and begin the recruitment process.'),
-            "/?q=/modules/Staff/applicationForm_jobOpenings_view.php",
-            organisationName,
-            'first'
-        ) }}
-    {% endif %}
-
+{# Forzamos el Portal de Tutores eliminando cualquier rastro del módulo nativo #}
+    {{ homepage.card(
+        'Ingreso de Tutores', 
+        'Área exclusiva para tutores autorizados de EduConnect. Inicie sesión para gestionar sus solicitudes y tutorías académicas.',
+        '/?q=/modules/Tutor/tutor_login.php',
+        organisationName,
+        'first'
+    ) }}
+    
     {% if publicRegistration %}
         {{ homepage.card(
             __('Register'), 
