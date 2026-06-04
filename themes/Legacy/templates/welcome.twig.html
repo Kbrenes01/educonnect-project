@@ -17,16 +17,14 @@ For info about editing, see: https://twig.symfony.com/doc/2.x/
         </p>
     </div>
 
-    {% if publicStudentApplications %}
-        {{ homepage.card(
-            __('Student Applications'), 
-            __('Parents of students interested in study at %1$s may use our %2$s online form%3$s to initiate the application process.'), 
-            "/?q=/modules/Students/applicationForm.php",
-            organisationName,
-            'first'
-        ) }}
-
-    {% endif %}
+{# Forzamos el Portal de Estudiantes eliminando cualquier rastro del módulo nativo #}
+{{ homepage.card(
+    'Portal de Estudiantes',
+    'Área exclusiva para estudiantes registrados de EduConnect. Inicie sesión para solicitar tutorías, consultar sus solicitudes y acceder a sus tutorías en proceso.',
+    '/?q=/modules/Estudiante/estudiante_login.php',
+    organisationName,
+    'first'
+) }}
 
 {# Forzamos el Portal de Tutores eliminando cualquier rastro del módulo nativo #}
     {{ homepage.card(

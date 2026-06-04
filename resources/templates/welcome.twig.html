@@ -9,15 +9,13 @@
         </p>
     </div>
 
-    {% if publicStudentApplications %}
         {{ homepage.card(
             'Solicitudes de Ingreso', 
             'Espacio dirigido a estudiantes y familias interesadas en formar parte de nuestra comunidad. Complete el formulario digital para iniciar su proceso de admisión y diagnóstico académico.', 
-            "/?q=/modules/Students/applicationForm.php",
+            "/?q=/modules/Estudiante/estudiante_login.php",
             organisationName,
             'none'
         ) }}
-    {% endif %}
 
     {{ homepage.card(
         'Portal de Tutores', 
