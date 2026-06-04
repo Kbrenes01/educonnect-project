@@ -1,77 +1,59 @@
-{#<!--
-Gibbon: the flexible, open school platform
-Founded by Ross Parker at ICHK Secondary. Built by Ross Parker, Sandra Kuipers and the Gibbon community (https://gibbonedu.org/about/)
-Copyright © 2010, Gibbon Foundation
-Gibbon™, Gibbon Education Ltd. (Hong Kong)
-
-This is a Gibbon template file, written in HTML and Twig syntax.
-For info about editing, see: https://twig.symfony.com/doc/2.x/
--->#}
+{##}
 {% import _self as homepage  %}
 
 <div class="flex flex-wrap mb-4 -mx-2 items-stretch ">
     <div class="w-full mx-2 my-2">
-        <h2>{{ __('Welcome') }}</h2>
-        <p>
-        {{ indexText | raw }}
+        <h2 class="text-purple-700 font-bold tracking-wide uppercase">Bienvenido a EduConnect</h2>
+        <p class="text-gray-700 text-justify leading-relaxed mt-2">
+            La plataforma integral de gestión y acompañamiento académico diseñada para transformar el aprendizaje. Conectamos estudiantes, docentes y tutores especializados en un entorno digital colaborativo enfocado en la excelencia y el desarrollo educativo.
         </p>
     </div>
 
-    {% if admissionsEnabled %}
+    {% if publicStudentApplications %}
         {{ homepage.card(
-            __(admissionsLinkName), 
-            __(admissionsLinkText), 
-            "/?q=/modules/Admissions/applicationFormSelect.php",
-            organisationName,
-            'first'
-        ) }}
-
-    {% elseif publicStudentApplications %}
-        {{ homepage.card(
-            __('Student Applications'), 
-            __('Parents of students interested in study at %1$s may use our %2$s online form%3$s to initiate the application process.'), 
+            'Solicitudes de Ingreso', 
+            'Espacio dirigido a estudiantes y familias interesadas en formar parte de nuestra comunidad. Complete el formulario digital para iniciar su proceso de admisión y diagnóstico académico.', 
             "/?q=/modules/Students/applicationForm.php",
             organisationName,
-            'first'
+            'none'
         ) }}
     {% endif %}
 
-    {% if publicStaffApplications %}
-        {{ homepage.card(
-            __('Staff Applications'), 
-            __('Individuals interested in working at %1$s may use our %2$s online form%3$s to view job openings and begin the recruitment process.'),
-            "/?q=/modules/Staff/applicationForm_jobOpenings_view.php",
-            organisationName,
-            'first'
-        ) }}
-    {% endif %}
-
+    {{ homepage.card(
+        'Portal de Tutores', 
+        'Área exclusiva para profesionales de la educación y tutores académicos de EduConnect. Inicie sesión para gestionar sus solicitudes de apoyo y controlar sus tutorías programadas.',
+        '/?q=/modules/Tutor/tutor_login.php',
+        organisationName,
+        'none'
+    ) }}
+    
     {% if publicRegistration %}
         {{ homepage.card(
-            __('Register'), 
-            __('Join our learning community.') ~ ' ' ~ __("It's free!"), 
-            "/?q=/publicRegistration.php"
+            'Registro de Usuarios', 
+            'Únase hoy mismo a nuestra comunidad de aprendizaje continuo de forma rápida y sencilla.', 
+            "/?q=/publicRegistration.php",
+            organisationName,
+            'none'
         ) }}
-
     {% endif %}
 
     {% if makeDepartmentsPublic %}
         {{ homepage.card(
-            __('Departments'), 
-            __('Please feel free to %1$sbrowse our departmental information%2$s, to learn more about %3$s.'),
+            'Departamentos Académicos', 
+            'Le invitamos a explorar las distintas áreas de estudio e información departamental para conocer más sobre nuestra oferta e identidad educativa.',
             "/?q=/modules/Departments/departments.php",
             organisationName,
-            'second'
+            'none'
         ) }}
     {% endif %}
 
     {% if makeUnitsPublic %}
         {{ homepage.card(
-            __('Learn With Us'), 
-            __('We are sharing some of our units of study with members of the public, so you can learn with us. Feel free to %1$sbrowse our public units%2$s.'),
+            'Aprenda con Nosotros', 
+            'Compartimos de manera abierta algunas de nuestras unidades académicas vigentes con el público en general. Explore nuestro material educativo interactivo de libre acceso.',
             "/?q=/modules/Planner/units_public.php&sidebar=false",
             organisationName,
-            'second'
+            'none'
         ) }}
     {% endif %}
 
@@ -81,24 +63,25 @@ For info about editing, see: https://twig.symfony.com/doc/2.x/
 
     {% if privacyPolicy %}
         {{ homepage.card(
-            __('Privacy Policy'), 
-            __('Read more about how personal data is used, stored and retained at %1$s.'),
+            'Política de Privacidad', 
+            'Consulte los lineamientos oficiales sobre cómo los datos personales de nuestra comunidad son protegidos, almacenados y administrados de manera segura.',
             "/?q=privacyPolicy.php",
             organisationName,
-            'first'
+            'none'
         ) }}
     {% endif %}
 </div>
+
 {% macro card(name, content, url = '', organisationName, orgNamePos = 'first') %}
 
-
     <div class="w-full sm:w-1/2 px-2 pb-4">
-        <a href="{{ absoluteURL ~ url }}" class="block border shadow-sm rounded bg-white h-full text-gray-800 hover:shadow-md hover:text-{{ themeColour }}-800 hover:border-{{ themeColour }}-600">
+        <a href="{{ absoluteURL ~ url }}" class="block border shadow-sm rounded bg-white h-full text-gray-800 hover:shadow-md hover:text-purple-700 hover:border-purple-600 transition-colors duration-200">
             <div class="block m-0 pt-4 px-4 text-base uppercase font-bold font-sans tracking-tight">
                 {{ name }}
-                {{ icon('basic', 'chevron-double-right', 'size-6 float-right -mt-px fill-current') }}
+
+                <svg class="w-5 h-5 float-right -mt-px fill-current" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-double-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"></path></svg>
             </div>
-            <p class="mb-1 p-4 text-gray-700 leading-tight">
+            <p class="mb-1 p-4 text-gray-700 leading-tight text-sm">
                 {% if orgNamePos == 'first' %}
                     {{ content|format(organisationName, '', '')|raw }}
                 {% elseif orgNamePos == 'second' %}
