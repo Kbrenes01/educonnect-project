@@ -34,135 +34,106 @@ class __TwigTemplate_69fd38343f6cf77f4eabee9be18ae1f1 extends Template
     protected function doDisplay(array $context, array $blocks = [])
     {
         $macros = $this->macros;
-        // line 10
+        // line 2
         $macros["homepage"] = $this->macros["homepage"] = $this;
-        // line 11
+        // line 3
         yield "
 <div class=\"flex flex-wrap mb-4 -mx-2 items-stretch \">
     <div class=\"w-full mx-2 my-2\">
-        <h2>";
-        // line 14
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getFunction('__')->getCallable()("Welcome"), "html", null, true);
-        yield "</h2>
-        <p>
-        ";
-        // line 16
-        yield ($context["indexText"] ?? null);
-        yield "
+        <h2 class=\"text-purple-700 font-bold tracking-wide uppercase\">Bienvenido a EduConnect</h2>
+        <p class=\"text-gray-700 text-justify leading-relaxed mt-2\">
+            La plataforma integral de gestión y acompañamiento académico diseñada para transformar el aprendizaje. Conectamos estudiantes, docentes y tutores especializados en un entorno digital colaborativo enfocado en la excelencia y el desarrollo educativo.
         </p>
     </div>
 
+        ";
+        // line 12
+        yield CoreExtension::callMacro($macros["homepage"], "macro_card", ["Solicitudes de Ingreso", "Espacio dirigido a estudiantes y familias interesadas en formar parte de nuestra comunidad. Complete el formulario digital para iniciar su proceso de admisión y diagnóstico académico.", "/?q=/modules/Estudiante/estudiante_login.php",         // line 16
+($context["organisationName"] ?? null), "none"], 12, $context, $this->getSourceContext());
+        // line 18
+        yield "
+
     ";
         // line 20
-        if (($context["admissionsEnabled"] ?? null)) {
-            // line 21
-            yield "        ";
-            yield CoreExtension::callMacro($macros["homepage"], "macro_card", [$this->env->getFunction('__')->getCallable()(            // line 22
-($context["admissionsLinkName"] ?? null)), $this->env->getFunction('__')->getCallable()(            // line 23
-($context["admissionsLinkText"] ?? null)), "/?q=/modules/Admissions/applicationFormSelect.php",             // line 25
-($context["organisationName"] ?? null), "first"], 21, $context, $this->getSourceContext());
-            // line 27
-            yield "
-
-    ";
-        } elseif (        // line 29
-($context["publicStudentApplications"] ?? null)) {
-            // line 30
-            yield "        ";
-            yield CoreExtension::callMacro($macros["homepage"], "macro_card", [$this->env->getFunction('__')->getCallable()("Student Applications"), $this->env->getFunction('__')->getCallable()("Parents of students interested in study at %1\$s may use our %2\$s online form%3\$s to initiate the application process."), "/?q=/modules/Students/applicationForm.php",             // line 34
-($context["organisationName"] ?? null), "first"], 30, $context, $this->getSourceContext());
-            // line 36
-            yield "
-    ";
-        }
-        // line 38
+        yield CoreExtension::callMacro($macros["homepage"], "macro_card", ["Portal de Tutores", "Área exclusiva para profesionales de la educación y tutores académicos de EduConnect. Inicie sesión para gestionar sus solicitudes de apoyo y controlar sus tutorías programadas.", "/?q=/modules/Tutor/tutor_login.php",         // line 24
+($context["organisationName"] ?? null), "none"], 20, $context, $this->getSourceContext());
+        // line 26
         yield "
+    
     ";
-        // line 39
-        if (($context["publicStaffApplications"] ?? null)) {
-            // line 40
-            yield "        ";
-            yield CoreExtension::callMacro($macros["homepage"], "macro_card", [$this->env->getFunction('__')->getCallable()("Staff Applications"), $this->env->getFunction('__')->getCallable()("Individuals interested in working at %1\$s may use our %2\$s online form%3\$s to view job openings and begin the recruitment process."), "/?q=/modules/Staff/applicationForm_jobOpenings_view.php",             // line 44
-($context["organisationName"] ?? null), "first"], 40, $context, $this->getSourceContext());
-            // line 46
-            yield "
-    ";
-        }
-        // line 48
-        yield "
-    ";
-        // line 49
+        // line 28
         if (($context["publicRegistration"] ?? null)) {
-            // line 50
+            // line 29
             yield "        ";
-            yield CoreExtension::callMacro($macros["homepage"], "macro_card", [$this->env->getFunction('__')->getCallable()("Register"), (($this->env->getFunction('__')->getCallable()("Join our learning community.") . " ") . $this->env->getFunction('__')->getCallable()("It's free!")), "/?q=/publicRegistration.php"], 50, $context, $this->getSourceContext());
-            // line 54
+            yield CoreExtension::callMacro($macros["homepage"], "macro_card", ["Registro de Usuarios", "Únase hoy mismo a nuestra comunidad de aprendizaje continuo de forma rápida y sencilla.", "/?q=/publicRegistration.php",             // line 33
+($context["organisationName"] ?? null), "none"], 29, $context, $this->getSourceContext());
+            // line 35
             yield "
-
+    ";
+        }
+        // line 37
+        yield "
+    ";
+        // line 38
+        if (($context["makeDepartmentsPublic"] ?? null)) {
+            // line 39
+            yield "        ";
+            yield CoreExtension::callMacro($macros["homepage"], "macro_card", ["Departamentos Académicos", "Le invitamos a explorar las distintas áreas de estudio e información departamental para conocer más sobre nuestra oferta e identidad educativa.", "/?q=/modules/Departments/departments.php",             // line 43
+($context["organisationName"] ?? null), "none"], 39, $context, $this->getSourceContext());
+            // line 45
+            yield "
+    ";
+        }
+        // line 47
+        yield "
+    ";
+        // line 48
+        if (($context["makeUnitsPublic"] ?? null)) {
+            // line 49
+            yield "        ";
+            yield CoreExtension::callMacro($macros["homepage"], "macro_card", ["Aprenda con Nosotros", "Compartimos de manera abierta algunas de nuestras unidades académicas vigentes con el público en general. Explore nuestro material educativo interactivo de libre acceso.", "/?q=/modules/Planner/units_public.php&sidebar=false",             // line 53
+($context["organisationName"] ?? null), "none"], 49, $context, $this->getSourceContext());
+            // line 55
+            yield "
     ";
         }
         // line 57
         yield "
     ";
         // line 58
-        if (($context["makeDepartmentsPublic"] ?? null)) {
-            // line 59
-            yield "        ";
-            yield CoreExtension::callMacro($macros["homepage"], "macro_card", [$this->env->getFunction('__')->getCallable()("Departments"), $this->env->getFunction('__')->getCallable()("Please feel free to %1\$sbrowse our departmental information%2\$s, to learn more about %3\$s."), "/?q=/modules/Departments/departments.php",             // line 63
-($context["organisationName"] ?? null), "second"], 59, $context, $this->getSourceContext());
-            // line 65
-            yield "
-    ";
-        }
-        // line 67
-        yield "
-    ";
-        // line 68
-        if (($context["makeUnitsPublic"] ?? null)) {
-            // line 69
-            yield "        ";
-            yield CoreExtension::callMacro($macros["homepage"], "macro_card", [$this->env->getFunction('__')->getCallable()("Learn With Us"), $this->env->getFunction('__')->getCallable()("We are sharing some of our units of study with members of the public, so you can learn with us. Feel free to %1\$sbrowse our public units%2\$s."), "/?q=/modules/Planner/units_public.php&sidebar=false",             // line 73
-($context["organisationName"] ?? null), "second"], 69, $context, $this->getSourceContext());
-            // line 75
-            yield "
-    ";
-        }
-        // line 77
-        yield "
-    ";
-        // line 78
         $context['_parent'] = $context;
         $context['_seq'] = CoreExtension::ensureTraversable(($context["indexHooks"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["hook"]) {
-            // line 79
+            // line 59
             yield "        ";
-            yield CoreExtension::callMacro($macros["homepage"], "macro_card", [CoreExtension::getAttribute($this->env, $this->source, $context["hook"], "title", [], "any", false, false, false, 79), CoreExtension::getAttribute($this->env, $this->source, $context["hook"], "text", [], "any", false, false, false, 79), CoreExtension::getAttribute($this->env, $this->source, $context["hook"], "url", [], "any", false, false, false, 79), ($context["organisationName"] ?? null)], 79, $context, $this->getSourceContext());
+            yield CoreExtension::callMacro($macros["homepage"], "macro_card", [CoreExtension::getAttribute($this->env, $this->source, $context["hook"], "title", [], "any", false, false, false, 59), CoreExtension::getAttribute($this->env, $this->source, $context["hook"], "text", [], "any", false, false, false, 59), CoreExtension::getAttribute($this->env, $this->source, $context["hook"], "url", [], "any", false, false, false, 59), ($context["organisationName"] ?? null)], 59, $context, $this->getSourceContext());
             yield "
     ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['hook'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 81
+        // line 61
         yield "
     ";
-        // line 82
+        // line 62
         if (($context["privacyPolicy"] ?? null)) {
-            // line 83
+            // line 63
             yield "        ";
-            yield CoreExtension::callMacro($macros["homepage"], "macro_card", [$this->env->getFunction('__')->getCallable()("Privacy Policy"), $this->env->getFunction('__')->getCallable()("Read more about how personal data is used, stored and retained at %1\$s."), "/?q=privacyPolicy.php",             // line 87
-($context["organisationName"] ?? null), "first"], 83, $context, $this->getSourceContext());
-            // line 89
+            yield CoreExtension::callMacro($macros["homepage"], "macro_card", ["Política de Privacidad", "Consulte los lineamientos oficiales sobre cómo los datos personales de nuestra comunidad son protegidos, almacenados y administrados de manera segura.", "/?q=privacyPolicy.php",             // line 67
+($context["organisationName"] ?? null), "none"], 63, $context, $this->getSourceContext());
+            // line 69
             yield "
     ";
         }
-        // line 91
+        // line 71
         yield "</div>
+
 ";
         return; yield '';
     }
 
-    // line 92
+    // line 73
     public function macro_card($__name__ = null, $__content__ = null, $__url__ = "", $__organisationName__ = null, $__orgNamePos__ = "first", ...$__varargs__)
     {
         $macros = $this->macros;
@@ -178,52 +149,45 @@ class __TwigTemplate_69fd38343f6cf77f4eabee9be18ae1f1 extends Template
         $blocks = [];
 
         return ('' === $tmp = \Twig\Extension\CoreExtension::captureOutput((function () use (&$context, $macros, $blocks) {
-            // line 93
+            // line 74
             yield "
-
     <div class=\"w-full sm:w-1/2 px-2 pb-4\">
         <a href=\"";
-            // line 96
+            // line 76
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape((($context["absoluteURL"] ?? null) . ($context["url"] ?? null)), "html", null, true);
-            yield "\" class=\"block border shadow-sm rounded bg-white h-full text-gray-800 hover:shadow-md hover:text-";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["themeColour"] ?? null), "html", null, true);
-            yield "-800 hover:border-";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["themeColour"] ?? null), "html", null, true);
-            yield "-600\">
+            yield "\" class=\"block border shadow-sm rounded bg-white h-full text-gray-800 hover:shadow-md hover:text-purple-700 hover:border-purple-600 transition-colors duration-200\">
             <div class=\"block m-0 pt-4 px-4 text-base uppercase font-bold font-sans tracking-tight\">
                 ";
-            // line 98
+            // line 78
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["name"] ?? null), "html", null, true);
             yield "
-                ";
-            // line 99
-            yield $this->env->getFunction('icon')->getCallable()("basic", "chevron-double-right", "size-6 float-right -mt-px fill-current");
-            yield "
+
+                <svg class=\"w-5 h-5 float-right -mt-px fill-current\" aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fas\" data-icon=\"angle-double-right\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\"><path fill=\"currentColor\" d=\"M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z\"></path></svg>
             </div>
-            <p class=\"mb-1 p-4 text-gray-700 leading-tight\">
+            <p class=\"mb-1 p-4 text-gray-700 leading-tight text-sm\">
                 ";
-            // line 102
+            // line 83
             if ((($context["orgNamePos"] ?? null) == "first")) {
-                // line 103
+                // line 84
                 yield "                    ";
                 yield Twig\Extension\CoreExtension::sprintf(($context["content"] ?? null), ($context["organisationName"] ?? null), "", "");
                 yield "
                 ";
-            } elseif ((            // line 104
+            } elseif ((            // line 85
 ($context["orgNamePos"] ?? null) == "second")) {
-                // line 105
+                // line 86
                 yield "                    ";
                 yield Twig\Extension\CoreExtension::sprintf(($context["content"] ?? null), "", "", ($context["organisationName"] ?? null));
                 yield "
                 ";
             } else {
-                // line 107
+                // line 88
                 yield "                    ";
                 yield ($context["content"] ?? null);
                 yield "
                 ";
             }
-            // line 109
+            // line 90
             yield "            </p>
         </a>
     </div>
@@ -254,7 +218,7 @@ class __TwigTemplate_69fd38343f6cf77f4eabee9be18ae1f1 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  227 => 109,  221 => 107,  215 => 105,  213 => 104,  208 => 103,  206 => 102,  200 => 99,  196 => 98,  187 => 96,  182 => 93,  166 => 92,  160 => 91,  156 => 89,  154 => 87,  152 => 83,  150 => 82,  147 => 81,  138 => 79,  134 => 78,  131 => 77,  127 => 75,  125 => 73,  123 => 69,  121 => 68,  118 => 67,  114 => 65,  112 => 63,  110 => 59,  108 => 58,  105 => 57,  100 => 54,  97 => 50,  95 => 49,  92 => 48,  88 => 46,  86 => 44,  84 => 40,  82 => 39,  79 => 38,  75 => 36,  73 => 34,  71 => 30,  69 => 29,  65 => 27,  63 => 25,  62 => 23,  61 => 22,  59 => 21,  57 => 20,  50 => 16,  45 => 14,  40 => 11,  38 => 10,);
+        return array (  191 => 90,  185 => 88,  179 => 86,  177 => 85,  172 => 84,  170 => 83,  162 => 78,  157 => 76,  153 => 74,  137 => 73,  130 => 71,  126 => 69,  124 => 67,  122 => 63,  120 => 62,  117 => 61,  108 => 59,  104 => 58,  101 => 57,  97 => 55,  95 => 53,  93 => 49,  91 => 48,  88 => 47,  84 => 45,  82 => 43,  80 => 39,  78 => 38,  75 => 37,  71 => 35,  69 => 33,  67 => 29,  65 => 28,  61 => 26,  59 => 24,  58 => 20,  54 => 18,  52 => 16,  51 => 12,  40 => 3,  38 => 2,);
     }
 
     public function getSourceContext()
