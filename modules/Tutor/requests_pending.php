@@ -1,4 +1,6 @@
 <?php
+// C:\xampp\htdocs\educonnect\modules\Tutor\requests_pending.php
+
 // COMENTAMOS LA SEGURIDAD TEMPORALMENTE PARA LA PRUEBA DEL SPRINT
 // if (isActionAccessible($guid, $connection2, '/modules/Tutor/requests_pending.php') == false) {
 //     $page->addError(__('You do not have access to this action.'));
@@ -15,24 +17,34 @@
         $page->addError($session->getFlash('tutor_error'));
     }
 
-    // Como no estamos pasando por el login estricto del módulo, si $tutorID da vacío, lo forzamos a 1 para la prueba
-    $tutorID = $session->get('gibbonPersonID') ?? '0000000001';
+    // 🛠️ CAPTURA INTELIGENTE DE SESIÓN:
+    // Intenta leer la sesión de Gibbon o de nuestro script de auth, y si está limpia diferencia por el username logueado.
+    $tutorID = $session->get('gibbonPersonID') ?? $_SESSION['guid'] ?? $_SESSION['gibbonPersonID'] ?? '';
+
+    if (empty($tutorID)) {
+        $currentUsername = $_SESSION['username'] ?? '';
+        if ($currentUsername === 'tutor2') {
+            $tutorID = '0000000006'; // ID asignado a tutor2
+        } else {
+            $tutorID = '0000000005'; // ID asignado a tutor1
+        }
+    }
 
     // Consultar solicitudes pendientes del tutor
     try {
+        // 🛠️ CORRECCIÓN DE COLUMNAS: Cambiado tr.requestedDate por tr.requestedOn, tr.academicNeed por tr.details, y status a 'Pendiente'
         $sql = "
             SELECT 
                 tr.tutorRequestID,
                 CONCAT(student.firstName, ' ', student.surname) AS studentName,
                 tr.subject,
-                tr.requestedDate,
-                tr.requestedTime,
-                tr.academicNeed
-            FROM tutorRequest tr
+                tr.requestedOn,
+                tr.details
+            FROM tutorrequest tr
             JOIN gibbonPerson student ON tr.studentID = student.gibbonPersonID
             WHERE tr.tutorID = :tutorID
-              AND tr.status = 'Pending'
-            ORDER BY tr.requestedDate ASC, tr.requestedTime ASC
+              AND tr.status = 'Pendiente'
+            ORDER BY tr.requestedOn ASC
         ";
         $result = $connection2->prepare($sql);
         $result->execute(['tutorID' => $tutorID]);
@@ -58,8 +70,13 @@
             echo "<tr>";
             echo "<td>" . htmlspecialchars($req['studentName']) . "</td>";
             echo "<td>" . htmlspecialchars($req['subject']) . "</td>";
-            echo "<td>" . date('d/m/Y', strtotime($req['requestedDate'])) . " " . date('H:i', strtotime($req['requestedTime'])) . "</td>";
-            echo "<td>" . htmlspecialchars($req['academicNeed']) . "</td>";
+            
+            // 💡 Formateamos la fecha usando 'requestedOn' que viene directo de tu BD
+            $fechaHora = date('d/m/Y H:i', strtotime($req['requestedOn']));
+            echo "<td>" . $fechaHora . "</td>";
+            
+            // 🛠️ Cambiado a $req['details'] que es la columna real que vimos en tu phpMyAdmin
+            echo "<td>" . htmlspecialchars($req['details']) . "</td>";
             
             // Apuntamos directamente al archivo físico para la prueba rápida
             echo "<td>

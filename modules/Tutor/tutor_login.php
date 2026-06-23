@@ -54,13 +54,6 @@ if (isset($_GET['error'])) {
     </form>
     
     <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #eeeeee;">
-        <p style="color: #666; font-size: 14px; margin-bottom: 12px;">¿No tienes una cuenta de tutor activa?</p>
-        <a href="./index.php?q=/modules/Tutor/tutor_register.php" style="display: block; background: #28a745; color: white; padding: 11px; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: background 0.2s;">
-            Registrarse como Tutor
-        </a>
-    </div>
-    
-    <div style="text-align: center; margin-top: 20px;">
         <a href="./index.php" style="color: #666; text-decoration: none; font-size: 13px;">&laquo; Volver al Inicio Público</a>
     </div>
 </div>
