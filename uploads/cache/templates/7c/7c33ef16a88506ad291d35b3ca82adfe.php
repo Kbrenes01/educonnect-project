@@ -48,7 +48,7 @@ class __TwigTemplate_69fd38343f6cf77f4eabee9be18ae1f1 extends Template
 
         ";
         // line 12
-        yield CoreExtension::callMacro($macros["homepage"], "macro_card", ["Solicitudes de Ingreso", "Espacio dirigido a estudiantes y familias interesadas en formar parte de nuestra comunidad. Complete el formulario digital para iniciar su proceso de admisión y diagnóstico académico.", "/?q=/modules/Estudiante/estudiante_login.php",         // line 16
+        yield CoreExtension::callMacro($macros["homepage"], "macro_card", ["Solicitudes de Ingreso", "Espacio dirigido a estudiantes. Inicie sesión para solicitar tutorías, consultar sus solicitudes y acceder a sus espacios privados de tutorías en proceso.", "/?q=/modules/Estudiante/estudiante_login.php",         // line 16
 ($context["organisationName"] ?? null), "none"], 12, $context, $this->getSourceContext());
         // line 18
         yield "

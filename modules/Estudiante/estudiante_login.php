@@ -18,7 +18,7 @@ if (isset($_GET['error'])) {
     } elseif ($_GET['error'] === 'role') {
         $errorMsg = "Acceso denegado. Este portal es exclusivo para estudiantes.";
     } elseif ($_GET['error'] === 'profile') {
-        $errorMsg = "El usuario existe, pero no tiene perfil de estudiante en EduConnect.";
+        $errorMsg = "Su cuenta aún no tiene habilitado el acceso al módulo de estudiantes. Comuníquese con administración para completar el proceso de registro.";
     } elseif ($_GET['error'] === 'db') {
         $errorMsg = "Ocurrió un error al conectar con la base de datos.";
     }

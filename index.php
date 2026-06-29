@@ -514,6 +514,8 @@ if ($isLoggedIn && !$upgrade) {
         $session->set('menuMainItems', $menuMainItems);
     }
 
+
+
     // Setup cached message array only if there are recent posts, or if more than one hour has elapsed
     $messageWallLatestPost = $container->get(MessengerGateway::class)->getRecentMessageWallTimestamp();
     $messageWallRefreshed = $session->get('messageWallRefreshed', 0);
