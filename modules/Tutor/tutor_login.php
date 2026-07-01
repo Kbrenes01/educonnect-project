@@ -9,9 +9,9 @@ $pageTitle = "Portal de Tutores Académicos";
 $title = "Portal de Tutores Académicos";
 $_GET['address'] = "Home > Portal de Tutores";
 
-// Redirigir si ya está logueado como tutor
+// Redirigir si ya está logueado como tutor directamente a su panel principal modular
 if (isset($_SESSION['is_tutor']) && $_SESSION['is_tutor'] === true) {
-    header("Location: ./index.php?q=/modules/Tutor/requests_pending.php");
+    header("Location: /educonnect/modules/Tutor/tutor_home.php");
     exit();
 }
 
@@ -37,7 +37,7 @@ if (isset($_GET['error'])) {
         </div>
     <?php endif; ?>
     
-    <form action="./modules/Tutor/auth_tutor.php" method="POST">
+    <form action="/educonnect/modules/Tutor/auth_tutor.php" method="POST">
         <div style="margin-bottom: 15px;">
             <label style="display: block; margin-bottom: 5px; font-weight: bold; color: #333;">Usuario o Correo:</label>
             <input type="text" name="tutor_user" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
@@ -54,6 +54,6 @@ if (isset($_GET['error'])) {
     </form>
     
     <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #eeeeee;">
-        <a href="./index.php" style="color: #666; text-decoration: none; font-size: 13px;">&laquo; Volver al Inicio Público</a>
+        <a href="/educonnect/index.php" style="color: #666; text-decoration: none; font-size: 13px;">&laquo; Volver al Inicio Público</a>
     </div>
 </div>
